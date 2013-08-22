@@ -9,3 +9,5 @@ preserve-inputs
 accounts-ui
 accounts-password
 accounts-google
+backbone
+bootstrap

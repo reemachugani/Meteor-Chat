@@ -1,7 +1,8 @@
 // groups -- { name: String,
 //			   users: [user_id1, user_id2, ...], 
 //			   admin: [user_id1, ...],
-//			   owner: user_id
+//			   owner: user_id,
+//			   last_modified: Number
 //			 }
 groups = new Meteor.Collection("groups");
 
@@ -27,7 +28,7 @@ groups.allow({
 
 
 // messages -- { group_id: groups_id,
-//				 user: user_id,
+//				 username: user.username,
 //				 text: String,
 //				 timestamp: Number
 //			   }
