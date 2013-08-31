@@ -1,6 +1,5 @@
 // groups -- { name: String,
 //			   users: [user_id1, user_id2, ...], 
-//			   admin: [user_id1, ...],
 //			   owner: user_id,
 //			   last_modified: Number
 //			 }
@@ -17,13 +16,10 @@ groups.allow({
 	insert: function(userId, doc){
 		return true;
 	},
-	update: function(userId, doc, fieldNames, modifier){
-		return _.contains(doc.admin, userId);
-	},
 	remove: function(userId, doc){
 		return doc.owner === userId;
 	},
-	fetch: ['admin', 'owner']
+	fetch: ['owner']
 });
 
 
@@ -47,4 +43,11 @@ messages.allow({
 		return groups.find({_id: doc.group_id, owner: userId}) != null;
 	},
 	fetch: ['group_id']
+});
+
+
+Meteor.users.allow({
+	remove: function(userId, doc){
+		return false;
+	}
 });
